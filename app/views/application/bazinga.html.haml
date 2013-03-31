@@ -3,15 +3,14 @@
 #bzng-toolbar{:style => "display: none;"}
   %a{"data-wysihtml5-command" => "formatBlock", "data-wysihtml5-command-value" => "h1"} H1
   %a{"data-wysihtml5-command" => "formatBlock", "data-wysihtml5-command-value" => "h2"} H2
+  %a{"data-wysihtml5-command" => "formatBlock", "data-wysihtml5-command-value" => "h3"} H3
   %a{"data-wysihtml5-command" => "bold"} bold
   %a{"data-wysihtml5-command" => "italic"} italic
-  / Some wysihtml5 commands require extra parameters
-  %a{"data-wysihtml5-command" => "foreColor", "data-wysihtml5-command-value" => "red"} red
-  %a{"data-wysihtml5-command" => "foreColor", "data-wysihtml5-command-value" => "green"} green
-  %a{"data-wysihtml5-command" => "foreColor", "data-wysihtml5-command-value" => "blue"} blue
+  %a{"data-wysihtml5-command" => "insertUnorderedList"} UL
+  %a{"data-wysihtml5-command" => "insertOrderedList"} OL
   %a{"data-wysihtml5-command" => "insertHTML", "data-wysihtml5-command-value" => "<div class='highlight'>Insert text here.</div>"} highlight
   / Some wysihtml5 commands like 'createLink' require extra paramaters specified by the user (eg. href)
-  %a{"data-wysihtml5-command" => "createLink"} insert link
+  %a{"data-wysihtml5-command" => "createLink"} link
   %div{"data-wysihtml5-dialog" => "createLink", :style => "display: none;"}
     %label
       Link:
@@ -27,9 +26,7 @@
 :javascript
   var wysihtml5ParserRules = {
     tags: {
-      "h1": 1
-      ,"h2": 2
-      ,"<div class='highlight'>Insert text here.</div>": 3
+      "<div class='highlight'>Insert text here.</div>": 1
     }
   };
 
