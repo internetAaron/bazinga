@@ -4,4 +4,8 @@ class ApplicationController < ActionController::Base
   def bazinga
     # just stubbed for a simple static route.
   end
+
+  def clippy
+    # just stubbed for a simple static route.
+  end
 end

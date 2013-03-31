@@ -1,8 +1,41 @@
 %h1 Bazinga!!!
 
-- copy = 'Bazinga!'
+#bzng-toolbar{:style => "display: none;"}
+  %a{"data-wysihtml5-command" => "formatBlock", "data-wysihtml5-command-value" => "h1"} H1
+  %a{"data-wysihtml5-command" => "formatBlock", "data-wysihtml5-command-value" => "h2"} H2
+  %a{"data-wysihtml5-command" => "bold"} bold
+  %a{"data-wysihtml5-command" => "italic"} italic
+  / Some wysihtml5 commands require extra parameters
+  %a{"data-wysihtml5-command" => "foreColor", "data-wysihtml5-command-value" => "red"} red
+  %a{"data-wysihtml5-command" => "foreColor", "data-wysihtml5-command-value" => "green"} green
+  %a{"data-wysihtml5-command" => "foreColor", "data-wysihtml5-command-value" => "blue"} blue
+  %a{"data-wysihtml5-command" => "insertHTML", "data-wysihtml5-command-value" => "<div class='highlight'>Insert text here.</div>"} highlight
+  / Some wysihtml5 commands like 'createLink' require extra paramaters specified by the user (eg. href)
+  %a{"data-wysihtml5-command" => "createLink"} insert link
+  %div{"data-wysihtml5-dialog" => "createLink", :style => "display: none;"}
+    %label
+      Link:
+      %input.text{"data-wysihtml5-dialog-field" => "href", :value => "http://"}/
+    %a{"data-wysihtml5-dialog-action" => "save"} OK
+    %a{"data-wysihtml5-dialog-action" => "cancel"} Cancel
+%form
+  = text_area_tag "bazinga-editor", nil, id: "bzng-editor", placeholder: "Enter your text ...", class: "bzng-editor", autofocus: true
 
-%p Test for clippy. (should copy "#{copy}" to clipboard) #{clippy(copy)}
+-#### START JAVASCRIPT FOR WYSIHTML5
+-#=======================================
+= javascript_include_tag "advanced", "wysihtml5-0.3.0"
+:javascript
+  var wysihtml5ParserRules = {
+    tags: {
+      "h1": 1
+      ,"h2": 2
+      ,"<div class='highlight'>Insert text here.</div>": 3
+    }
+  };
 
-= label_tag :paste_here
-= text_field_tag :paste_here
+  var editor = new wysihtml5.Editor("bzng-editor", {
+    toolbar: "bzng-toolbar"
+    ,parserRules: wysihtml5ParserRules
+    ,stylesheets: ["#{stylesheet_path('wysihtml5')}", "#{stylesheet_path('bzng-editor')}"]
+  });
+
