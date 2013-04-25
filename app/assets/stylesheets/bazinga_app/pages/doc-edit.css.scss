@@ -1,5 +1,6 @@
 .toolbar {
   margin-bottom: 12px;
+  @include box-shadow(inset 1px 1px 5px yellow); // test compass
 }
 
 .bzng-editor {
