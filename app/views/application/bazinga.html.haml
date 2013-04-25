@@ -1,22 +1,22 @@
 %h1 Bazinga!!!
 
-#bzng-toolbar{:style => "display: none;"}
-  %a{"data-wysihtml5-command" => "formatBlock", "data-wysihtml5-command-value" => "h1"} H1
-  %a{"data-wysihtml5-command" => "formatBlock", "data-wysihtml5-command-value" => "h2"} H2
-  %a{"data-wysihtml5-command" => "formatBlock", "data-wysihtml5-command-value" => "h3"} H3
-  %a{"data-wysihtml5-command" => "bold"} bold
-  %a{"data-wysihtml5-command" => "italic"} italic
-  %a{"data-wysihtml5-command" => "insertUnorderedList"} UL
-  %a{"data-wysihtml5-command" => "insertOrderedList"} OL
-  %a{"data-wysihtml5-command" => "formatCode"} Code
+#bzng-toolbar.toolbar
+  %a.btn{"data-wysihtml5-command" => "formatBlock", "data-wysihtml5-command-value" => "h1"} H1
+  %a.btn{"data-wysihtml5-command" => "formatBlock", "data-wysihtml5-command-value" => "h2"} H2
+  %a.btn{"data-wysihtml5-command" => "formatBlock", "data-wysihtml5-command-value" => "h3"} H3
+  %a.btn{"data-wysihtml5-command" => "bold"} bold
+  %a.btn{"data-wysihtml5-command" => "italic"} italic
+  %a.btn{"data-wysihtml5-command" => "insertUnorderedList"} UL
+  %a.btn{"data-wysihtml5-command" => "insertOrderedList"} OL
+  %a.btn{"data-wysihtml5-command" => "formatCode"} Code
   / Some wysihtml5 commands like 'createLink' require extra paramaters specified by the user (eg. href)
-  %a{"data-wysihtml5-command" => "createLink"} link
+  %a.btn{"data-wysihtml5-command" => "createLink"} link
   %div{"data-wysihtml5-dialog" => "createLink", :style => "display: none;"}
     %label
       Link:
       %input.text{"data-wysihtml5-dialog-field" => "text", placeholder: "Link Text"}
       %input.text{"data-wysihtml5-dialog-field" => "href", :value => "http://"}
-    %a{"data-wysihtml5-dialog-action" => "save"} OK
+    %a.btn{"data-wysihtml5-dialog-action" => "save"} OK
     %a{"data-wysihtml5-dialog-action" => "cancel"} Cancel
 %form
   = text_area_tag "bazinga-editor", nil, id: "bzng-editor", class: "bzng-editor"

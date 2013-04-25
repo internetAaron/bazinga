@@ -9,5 +9,16 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
  */
+
+// START ENVIRONMENT
+ @import "compass";
+
+ // START RESETS
+ @import "bazinga_app/normalize";
+
+ // START COMPONENTS
+ @import "bazinga_app/components/buttons";
+
+ // START PAGES
+ @import "bazinga_app/pages/doc-edit";
