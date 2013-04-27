@@ -8,4 +8,8 @@ class ApplicationController < ActionController::Base
   def clippy
     # just stubbed for a simple static route.
   end
+
+  def layout
+    # just stubbed for a simple static route.
+  end
 end
