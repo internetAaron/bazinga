@@ -138,6 +138,11 @@
 /*------------------------------------*\
     $IMPORTS
 \*------------------------------------*/
+
+/** Import vars **/
+@import "vars";
+
+
 /**
  * Generic utility styles etc.
  */
@@ -196,7 +201,9 @@
 @import "objects/rules";
 @import "objects/stats";
 @import "objects/greybox";
+
 @import "objects/editor";
+@import "objects/topbar";
 
 
 
@@ -213,6 +220,6 @@
 @import "generic/debug";
 
 
-/** Import vars/overrides/custom **/
-@import "vars";
+/** Import overrides/custom **/
 @import "objects/custom-layout";
+@import "objects/sidebar";

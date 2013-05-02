@@ -1,0 +1,36 @@
+/*------------------------------------*\
+    TOPBAR
+\*------------------------------------*/  
+
+#topbar {
+  background: $sea-green;
+  color: $white-color;
+  padding: 0.6em 0 0.4em 1.5em;
+  border-bottom: 2px solid $sea-green-dark;
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+  margin-bottom: 0;
+
+  h1 {
+    float: none;
+    font-size: 1.75em;
+    color: #ffffff;
+    display: inline-block;
+  }
+
+
+  .container {
+    display: inline-block;
+    margin: 0;
+    top: 60px;
+
+    h1 {
+      font-size: 1.8em;
+      line-height: 1.0em;
+      margin: 0;
+    }
+  }
+
+}

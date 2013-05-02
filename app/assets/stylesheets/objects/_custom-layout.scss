@@ -1,3 +1,44 @@
 .container {
-  margin: 1.0em auto;
+ display: block;
+}
+
+.main {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+  padding: 1.2em 2em;
+  position: fixed;
+  overflow: hidden;
+  overflow-y: scroll;
+  border-top-left-radius: 3px;
+  box-shadow: 0 0 5px rgba(0,0,0, .6);
+  top: 75px;
+  right: 15px;
+  bottom: 0;
+  width: 76%;
+  background: #fff;
+
+  #nav {
+    a {
+      color: #333;
+    }
+  }
+}
+
+.main::-webkit-scrollbar {
+  -webkit-appearance: none;
+  background-color: rgba(0,0,0, .15);
+  width: 8px;
+  height: 8px;
+}
+
+.main::-webkit-scrollbar-thumb {
+  border-radius: 0;
+  background-color: rgba(0,0,0, .4);
+}
+
+iframe.wysihtml5-sandbox {
+  border: 0 !important;
+  cursor: text;
 }

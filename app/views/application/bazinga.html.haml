@@ -1,10 +1,20 @@
-%h1 Bazinga!!!
+.container
+  #nav
+    %ul
+      %li 
+        %a{:href => "#"} Add Page
+      %li
+        %a{:href => "#{}"} Add Section
+    %ul.nav--stacked
+      %li.page 
+        This is a Page Title
+    %ul.nav--stacked
+      %li H1 Title
+      %li H1 Title
+      %li H1 Title
 
-.grid-wrapper.container
-  .grid__item.three-twelfths
-    %h3 this is the side bar
-
-  .grid__item.nine-twelfths
+  .main{:role => "main"}
+    %a#toggle{:href => "#toolbar"} Menu
     #bzng-toolbar.toolbar
       %a.btn{"data-wysihtml5-command" => "formatBlock", "data-wysihtml5-command-value" => "h1"} H1
       %a.btn{"data-wysihtml5-command" => "formatBlock", "data-wysihtml5-command-value" => "h2"} H2
@@ -28,7 +38,7 @@
 
     -#### START JAVASCRIPT FOR WYSIHTML5
     -#=======================================
-    = javascript_include_tag "advanced", "wysihtml5-0.3.0"
+    = javascript_include_tag "advanced", "wysihtml5-0.3.0", "responsive-nav"
     :javascript
       var editor = new wysihtml5.Editor("bzng-editor", {
         toolbar: "bzng-toolbar"
@@ -101,3 +111,6 @@
           });
         };
       })(wysihtml5);
+
+:javascript
+  var navigation = responsiveNav("#nav", {customToggle: "#toggle"});
