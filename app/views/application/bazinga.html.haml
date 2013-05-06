@@ -1,116 +1,124 @@
 .container
-  #nav
-    %ul
-      %li 
-        %a{:href => "#"} Add Page
-      %li
-        %a{:href => "#{}"} Add Section
-    %ul.nav--stacked
-      %li.page 
-        This is a Page Title
-    %ul.nav--stacked
-      %li H1 Title
-      %li H1 Title
-      %li H1 Title
+  .grid-wrapper
+    .grid.one-quarter
+      #nav
+        %ul.addnav
+          %li 
+            %a{:href => "#{}"} Add Page
+          %li
+            %a{:href => "#{}"} Add Section
+        %ul.nav--stacked
+          %li.page 
+            %a{:href => "#{}"} This is a Page Title
+        %ul.nav--stacked
+          %li.section 
+            %a{:href => "#{}"} H1 Title
+          %li.section
+            %a{:href => "#{}"} H1 Title
+          %li.section
+            %a{:href => "#{}"} H1 Title
+    
+    .grid.three-quarters
+      .main{:role => "main"}
+        / This needs to be edit-albe as well
+        %h1 This is the Page title
+        %a#toggle{:href => "#toolbar"} Menu
+        #bzng-toolbar.toolbar
+          %a.btn{"data-wysihtml5-command" => "formatBlock", "data-wysihtml5-command-value" => "h1"} H1
+          %a.btn{"data-wysihtml5-command" => "formatBlock", "data-wysihtml5-command-value" => "h2"} H2
+          %a.btn{"data-wysihtml5-command" => "formatBlock", "data-wysihtml5-command-value" => "h3"} H3
+          %a.btn{"data-wysihtml5-command" => "bold"} bold
+          %a.btn{"data-wysihtml5-command" => "italic"} italic
+          %a.btn{"data-wysihtml5-command" => "insertUnorderedList"} UL
+          %a.btn{"data-wysihtml5-command" => "insertOrderedList"} OL
+          %a.btn{"data-wysihtml5-command" => "formatCode"} Code
+          / Some wysihtml5 commands like 'createLink' require extra paramaters specified by the user (eg. href)
+          %a.btn{"data-wysihtml5-command" => "createLink"} link
+          %div{"data-wysihtml5-dialog" => "createLink", :style => "display: none;"}
+            %label
+              Link:
+              %input.text{"data-wysihtml5-dialog-field" => "text", placeholder: "Link Text"}
+              %input.text{"data-wysihtml5-dialog-field" => "href", :value => "http://"}
+            %a.btn{"data-wysihtml5-dialog-action" => "save"} OK
+            %a{"data-wysihtml5-dialog-action" => "cancel"} Cancel
+        %form
+          = text_area_tag "bazinga-editor", nil, id: "bzng-editor", class: "bzng-editor"
 
-  .main{:role => "main"}
-    %a#toggle{:href => "#toolbar"} Menu
-    #bzng-toolbar.toolbar
-      %a.btn{"data-wysihtml5-command" => "formatBlock", "data-wysihtml5-command-value" => "h1"} H1
-      %a.btn{"data-wysihtml5-command" => "formatBlock", "data-wysihtml5-command-value" => "h2"} H2
-      %a.btn{"data-wysihtml5-command" => "formatBlock", "data-wysihtml5-command-value" => "h3"} H3
-      %a.btn{"data-wysihtml5-command" => "bold"} bold
-      %a.btn{"data-wysihtml5-command" => "italic"} italic
-      %a.btn{"data-wysihtml5-command" => "insertUnorderedList"} UL
-      %a.btn{"data-wysihtml5-command" => "insertOrderedList"} OL
-      %a.btn{"data-wysihtml5-command" => "formatCode"} Code
-      / Some wysihtml5 commands like 'createLink' require extra paramaters specified by the user (eg. href)
-      %a.btn{"data-wysihtml5-command" => "createLink"} link
-      %div{"data-wysihtml5-dialog" => "createLink", :style => "display: none;"}
-        %label
-          Link:
-          %input.text{"data-wysihtml5-dialog-field" => "text", placeholder: "Link Text"}
-          %input.text{"data-wysihtml5-dialog-field" => "href", :value => "http://"}
-        %a.btn{"data-wysihtml5-dialog-action" => "save"} OK
-        %a{"data-wysihtml5-dialog-action" => "cancel"} Cancel
-    %form
-      = text_area_tag "bazinga-editor", nil, id: "bzng-editor", class: "bzng-editor"
-
-    -#### START JAVASCRIPT FOR WYSIHTML5
-    -#=======================================
-    = javascript_include_tag "advanced", "wysihtml5-0.3.0", "responsive-nav"
-    :javascript
-      var editor = new wysihtml5.Editor("bzng-editor", {
-        toolbar: "bzng-toolbar"
-        ,parserRules: wysihtml5ParserRules
-        ,stylesheets: ["#{stylesheet_path('wysihtml5')}", "#{stylesheet_path('bzng-editor')}"]
-        ,jscripts: ["#{javascript_path('https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js')}"]
-      });
-
-      // wrap code in <pre class="prettyprint linenums"><code>...</code></pre>
-      wysihtml5.commands.formatCode = {
-        exec: function(composer) {
-          var pre = this.state(composer);
-          if (pre) {
-            // caret is already within a <pre><code>...</code></pre>
-            composer.selection.executeAndRestore(function() {
-              var code = pre.querySelector("code");
-              wysihtml5.dom.replaceWithChildNodes(pre);
-              if (code) {
-                wysihtml5.dom.replaceWithChildNodes(pre);
-              }
-            });
-          } else {
-            // Wrap in <pre><code>...</code></pre>
-            var range = composer.selection.getRange(),
-                selectedNodes = range.extractContents(),
-                pre = composer.doc.createElement("pre"),
-                code = composer.doc.createElement("code");
-            $(pre).addClass("prettyprint linenums");
-            pre.appendChild(code);
-            code.appendChild(selectedNodes)
-            range.insertNode(pre);
-            composer.selection.selectNode(pre);
-          }
-        }
-        ,state: function(composer) {
-          var selectedNode = composer.selection.getSelectedNode();
-          return wysihtml5.dom.getParentElement(selectedNode, { nodeName: "CODE" }) && wysihtml5.dom.getParentElement(selectedNode, { nodeName: "PRE" });
-        }
-      };
-
-      // keyboard shortcuts
-      (function(wysihtml5) {
-        var dom       = wysihtml5.dom,
-            browser   = wysihtml5.browser,
-            /**
-             * Map keyCodes to query commands
-             */
-            shortcuts = {
-              "66": "bold"                      // B
-              ,"73": "italic"                   // I
-              ,"85": "underline"                // U
-              ,"49": ["formatBlock", "h1"]      // 1
-              ,"50": ["formatBlock", "h2"]      // 2
-              ,"51": ["formatBlock", "h3"]      // 3
-            };
-
-        wysihtml5.views.Composer.prototype.observe = function() {
-          var that = this,
-              element = this.element
-
-          // --------- Shortcut logic ---------
-          dom.observe(element, "keydown", function(event) {
-            var keyCode  = event.keyCode,
-                command  = shortcuts[keyCode];
-
-            if ((event.ctrlKey || event.metaKey) && !event.altKey && command) {
-              typeof(command) !== "string" ? that.commands.exec(command[0], command[1]) : that.commands.exec(command);
-              event.preventDefault();
-            }
+        -#### START JAVASCRIPT FOR WYSIHTML5
+        -#=======================================
+        = javascript_include_tag "advanced", "wysihtml5-0.3.0", "responsive-nav"
+        :javascript
+          var editor = new wysihtml5.Editor("bzng-editor", {
+            toolbar: "bzng-toolbar"
+            ,parserRules: wysihtml5ParserRules
+            ,stylesheets: ["#{stylesheet_path('wysihtml5')}", "#{stylesheet_path('bzng-editor')}"]
+            ,jscripts: ["#{javascript_path('https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js')}"]
           });
-        };
-      })(wysihtml5);
 
-:javascript
-  var navigation = responsiveNav("#nav", {customToggle: "#toggle"});
+          // wrap code in <pre class="prettyprint linenums"><code>...</code></pre>
+          wysihtml5.commands.formatCode = {
+            exec: function(composer) {
+              var pre = this.state(composer);
+              if (pre) {
+                // caret is already within a <pre><code>...</code></pre>
+                composer.selection.executeAndRestore(function() {
+                  var code = pre.querySelector("code");
+                  wysihtml5.dom.replaceWithChildNodes(pre);
+                  if (code) {
+                    wysihtml5.dom.replaceWithChildNodes(pre);
+                  }
+                });
+              } else {
+                // Wrap in <pre><code>...</code></pre>
+                var range = composer.selection.getRange(),
+                    selectedNodes = range.extractContents(),
+                    pre = composer.doc.createElement("pre"),
+                    code = composer.doc.createElement("code");
+                $(pre).addClass("prettyprint linenums");
+                pre.appendChild(code);
+                code.appendChild(selectedNodes)
+                range.insertNode(pre);
+                composer.selection.selectNode(pre);
+              }
+            }
+            ,state: function(composer) {
+              var selectedNode = composer.selection.getSelectedNode();
+              return wysihtml5.dom.getParentElement(selectedNode, { nodeName: "CODE" }) && wysihtml5.dom.getParentElement(selectedNode, { nodeName: "PRE" });
+            }
+          };
+
+          // keyboard shortcuts
+          (function(wysihtml5) {
+            var dom       = wysihtml5.dom,
+                browser   = wysihtml5.browser,
+                /**
+                 * Map keyCodes to query commands
+                 */
+                shortcuts = {
+                  "66": "bold"                      // B
+                  ,"73": "italic"                   // I
+                  ,"85": "underline"                // U
+                  ,"49": ["formatBlock", "h1"]      // 1
+                  ,"50": ["formatBlock", "h2"]      // 2
+                  ,"51": ["formatBlock", "h3"]      // 3
+                };
+
+            wysihtml5.views.Composer.prototype.observe = function() {
+              var that = this,
+                  element = this.element
+
+              // --------- Shortcut logic ---------
+              dom.observe(element, "keydown", function(event) {
+                var keyCode  = event.keyCode,
+                    command  = shortcuts[keyCode];
+
+                if ((event.ctrlKey || event.metaKey) && !event.altKey && command) {
+                  typeof(command) !== "string" ? that.commands.exec(command[0], command[1]) : that.commands.exec(command);
+                  event.preventDefault();
+                }
+              });
+            };
+          })(wysihtml5);
+
+    :javascript
+      var navigation = responsiveNav("#nav", {customToggle: "#toggle"});

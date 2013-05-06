@@ -8,16 +8,10 @@
   box-sizing: border-box;
   -webkit-overflow-scrolling: touch;
   padding: 1.2em 2em;
-  position: fixed;
-  overflow: hidden;
-  overflow-y: scroll;
-  border-top-left-radius: 3px;
-  box-shadow: 0 0 5px rgba(0,0,0, .6);
-  top: 75px;
-  right: 15px;
-  bottom: 0;
-  width: 76%;
+  border-radius: 3px;
+  @include vendor(box-shadow, 0 0 5px rgba(0,0,0, .4));
   background: #fff;
+  margin: 75px 0 20px 0;
 
   #nav {
     a {
@@ -41,4 +35,14 @@
 iframe.wysihtml5-sandbox {
   border: 0 !important;
   cursor: text;
+}
+
+.bzng-editor {
+  cursor: text;
+}
+
+
+.grid__item, .grid {
+  float: left;
+  display: initial;
 }

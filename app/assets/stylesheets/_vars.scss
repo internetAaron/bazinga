@@ -59,11 +59,6 @@ $use-greybox:       false;
  * Place any variables that should override inuit.css’ defaults here.
  */
 
-.grid__item{
-  float: left;
-  display: initial;
-}
-
 
 
 /*------------------------------------*\
@@ -79,7 +74,15 @@ $container-width:     900px;
 // Colors
 
 $white-color:           #ffffff;
-$gray:                  #374040;
+$gray:                  #bdc3c7;
       
 $sea-green:             #16a085;
 $sea-green-dark:        #00604E;
+$blue:                  rgb(41, 128, 185);
+
+
+
+
+a {
+  color: $blue;
+}
