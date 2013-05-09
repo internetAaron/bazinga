@@ -1,0 +1,136 @@
+/*------------------------------------*\
+    Editor Page STYLES
+\*------------------------------------*/
+
+// Editor area
+
+.main {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+  padding: 1.2em 2em;
+  border-radius: 0px;
+  @include vendor(box-shadow, 0 0 7px rgba(0,0,0, .4));
+  background: #fff;
+  margin: 46px 0px 0px 0;
+
+  #nav {
+    a {
+      color: #333;
+    }
+  }
+
+  .head {
+    border-bottom: 2px dashed lighten($gray, 10%);
+    padding-bottom: 1.25em;
+    margin-bottom: 1.5em;
+    display: block;
+
+    h1 {
+      margin: 0;
+    }
+
+    ul {
+      margin: 0;
+      list-style: none;
+
+      li {
+        float: left;
+        margin: 1.0em 0 0 1.25em;
+      }
+    }
+    &:after { 
+     content: "."; 
+     visibility: hidden; 
+     display: block; 
+     height: 0; 
+     clear: both;
+    }
+  }
+}
+
+.main::-webkit-scrollbar {
+  -webkit-appearance: none;
+  background-color: rgba(0,0,0, .15);
+  width: 8px;
+  height: 8px;
+}
+
+.main::-webkit-scrollbar-thumb {
+  border-radius: 0;
+  background-color: rgba(0,0,0, .4);
+}
+
+iframe.wysihtml5-sandbox {
+  border: 0 !important;
+  cursor: text;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.bzng-editor {
+  cursor: text;
+}
+
+
+// WYSYWG Editor tool bar
+.toolbar {
+  display: inline-block;
+  border-radius: 4px;
+  -moz-box-shadow:    0px 0px 5px 0px rgba(0,0,0,0.20);
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.20);
+  box-shadow:         0px 0px 5px 0px rgba(0,0,0,0.20);
+  margin: 0;
+  z-index: 99;
+  position: relative;
+}
+.toolbar li {
+  float:left;
+  list-style: none;
+}
+
+
+
+.toolbar a{
+  background: #FFFFFF;
+
+  background-image: -o-linear-gradient(-90deg, rgba(255,255,255,0.50) 0%, rgba(219,219,219,0.50) 93%, rgba(176,176,176,0.50) 100%);
+  background-image: -moz-linear-gradient(-90deg, rgba(255,255,255,0.50) 0%, rgba(219,219,219,0.50) 93%, rgba(176,176,176,0.50) 100%);
+  background-image: -webkit-linear-gradient(-90deg, rgba(255,255,255,0.50) 0%, rgba(219,219,219,0.50) 93%, rgba(176,176,176,0.50) 100%);
+  background-image: -ms-linear-gradient(-90deg, rgba(255,255,255,0.50) 0%, rgba(219,219,219,0.50) 93%, rgba(176,176,176,0.50) 100%);
+  background-image: linear-gradient(-180deg, rgba(255,255,255,0.50) 0%, rgba(219,219,219,0.50) 93%, rgba(176,176,176,0.50) 100%);
+
+  
+  border-left: 1px solid rgba(79,123,170,.2);
+  border-right: 1px solid rgba(255,255,255,.1);
+  color: #40648a;
+  display: block;
+  font-size: 14px;
+  padding: 0.3em 1.5em;
+  text-decoration: none;
+  text-shadow: 0 1px 0 #fff;
+}
+  .toolbar li:first-child a {
+    border-radius: 2px 0 0 2px;
+    border-left: 1px solid rgba(79,123,170,.1);
+  }
+  .toolbar li:last-child a {
+    border-radius: 0 2px 2px 0;
+  }
+  .toolbar a:hover {
+    background: #FFFFFF;
+    background-image: -o-linear-gradient(-90deg, #7F8C8D 0%, #7F8C8D 9%, rgba(255,255,255,0.93) 9%, rgba(219,219,219,0.50) 93%, rgba(176,176,176,0.50) 100%);
+    background-image: -moz-linear-gradient(-90deg, #7F8C8D 0%, #7F8C8D 9%, rgba(255,255,255,0.93) 9%, rgba(219,219,219,0.50) 93%, rgba(176,176,176,0.50) 100%);
+    background-image: -webkit-linear-gradient(-90deg, #7F8C8D 0%, #7F8C8D 9%, rgba(255,255,255,0.93) 9%, rgba(219,219,219,0.50) 93%, rgba(176,176,176,0.50) 100%);
+    background-image: -ms-linear-gradient(-90deg, #7F8C8D 0%, #7F8C8D 9%, rgba(255,255,255,0.93) 9%, rgba(219,219,219,0.50) 93%, rgba(176,176,176,0.50) 100%);
+    
+  }
+  .toolbar a:active{
+    background: #FFFFFF;
+    background-image: -o-linear-gradient(-90deg, #7F8C8D 0%, #7F8C8D 9%, rgba(255,255,255,0.93) 9%, rgba(219,219,219,0.50) 93%, rgba(176,176,176,0.50) 100%);
+    background-image: -moz-linear-gradient(-90deg, #7F8C8D 0%, #7F8C8D 9%, rgba(255,255,255,0.93) 9%, rgba(219,219,219,0.50) 93%, rgba(176,176,176,0.50) 100%);
+    background-image: -webkit-linear-gradient(-90deg, #7F8C8D 0%, #7F8C8D 9%, rgba(255,255,255,0.93) 9%, rgba(219,219,219,0.50) 93%, rgba(176,176,176,0.50) 100%);
+    background-image: -ms-linear-gradient(-90deg, #7F8C8D 0%, #7F8C8D 9%, rgba(255,255,255,0.93) 9%, rgba(219,219,219,0.50) 93%, rgba(176,176,176,0.50) 100%);
+    box-shadow: 0 2px 3px rgba(0,0,0,.3) inset;
+  }

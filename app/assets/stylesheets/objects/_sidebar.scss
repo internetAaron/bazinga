@@ -3,40 +3,19 @@
 \*------------------------------------*/
 
 
-body,div,
-h1,h2,p,
-ol,ul,li {
-  margin: 0;
-  padding: 0;
-  border: 0; 
-}
-
-@-webkit-viewport { width: device-width; }
-@-moz-viewport { width: device-width; }
-@-ms-viewport { width: device-width; }
-@-o-viewport { width: device-width; }
-@viewport { width: device-width; }
-
-html, body {
-  min-height: 100%;
-}
-
-body {
-  min-width: 290px;
-}
 
 #nav {
-  position: absolute;
-  width: 24%;
-  top: 75px;
-  left: 2.0em;
+  position: relative;
+  top: 73px;
   padding: 0 1em;
+  width: 100% !important;
 }
 
 #nav ul {
   display: inline-block;
   width: 100%;
   list-style: none;
+  margin: 0;
 }
 
 #nav li {
@@ -46,7 +25,7 @@ body {
 }
 
 #nav a {
-  color: $gray;
+  color: darken($gray, 16%);
   font-weight: bold;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -156,34 +135,71 @@ li.section {
     }
 
     a {
-      // display: inline-block;
-      // color: #fff !important;
-      // border: 1px solid darken($sea-green, 4%) !important;
-      // background: $sea-green;
-      // text-align: center;
-      // padding: 0.3em 0;
-      // font-size: 0.8em;
-      // text-decoration: none;
-      // font-weight: normal;
-      // @include vendor(border-radius, 3px);
-      // @include vendor(box-shadow, 0 0 5px rgba(0,0,0, .1));
-      display: inline-block;
+      display: block;
       margin: 0 5px 0 0;
-      border-radius: 6px;
       font-size: 13px;
-      text-decoration: none;
-      border: 0;
-      background: #34495E;
-      color: #FFF;
       cursor: pointer;
       outline: 0;
-      padding: 6px 16px;
-      box-shadow: #BDC3C7 2px 2px 0px;
+      padding: 8px 4px;
       text-align: center;
+      color: #777777;
+
+      /* btn bg: */
+
+      border-radius: 3px;
+
+      background: #FFFFFF;
+
+      background-image: -o-linear-gradient(-90deg, #00A587 0%, #00A587 9%, rgba(255,255,255,0.93) 9%, rgba(219,219,219,0.50) 93%, rgba(176,176,176,0.50) 100%);
+      background-image: -moz-linear-gradient(-90deg, #00A587 0%, #00A587 9%, rgba(255,255,255,0.93) 9%, rgba(219,219,219,0.50) 93%, rgba(176,176,176,0.50) 100%);
+      background-image: -webkit-linear-gradient(-90deg, #00A587 0%, #00A587 9%, rgba(255,255,255,0.93) 9%, rgba(219,219,219,0.50) 93%, rgba(176,176,176,0.50) 100%);
+      background-image: -ms-linear-gradient(-90deg, #00A587 0%, #00A587 9%, rgba(255,255,255,0.93) 9%, rgba(219,219,219,0.50) 93%, rgba(176,176,176,0.50) 100%);
+      background-image: linear-gradient(-180deg, #00A587 0%, #00A587 9%, rgba(255,255,255,0.93) 9%, rgba(219,219,219,0.50) 93%, rgba(176,176,176,0.50) 100%);
+
+      border: 1px solid #B6B6B6;
+
+      -moz-box-shadow:    0px 0px 5px 0px rgba(0,0,0,0.20);
+      -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.20);
+      box-shadow:         0px 0px 5px 0px rgba(0,0,0,0.20);
 
       &:hover {
-        background: darken($blue, 10%);
+        background-image: -o-linear-gradient(-90deg, #F39C12 0%, #F39C12 9%, rgba(255,255,255,0.93) 9%, rgba(219,219,219,0.50) 93%, rgba(176,176,176,0.50) 100%);
+        background-image: -moz-linear-gradient(-90deg, #F39C12 0%, #F39C12 9%, rgba(255,255,255,0.93) 9%, rgba(219,219,219,0.50) 93%, rgba(176,176,176,0.50) 100%);
+        background-image: -webkit-linear-gradient(-90deg, #F39C12 0%, #F39C12 9%, rgba(255,255,255,0.93) 9%, rgba(219,219,219,0.50) 93%, rgba(176,176,176,0.50) 100%);
+        background-image: -ms-linear-gradient(-90deg, #F39C12 0%, #F39C12 9%, rgba(255,255,255,0.93) 9%, rgba(219,219,219,0.50) 93%, rgba(176,176,176,0.50) 100%);
+        background-image: linear-gradient(-180deg, #F39C12 0%, #F39C12 9%, rgba(255,255,255,0.93) 9%, rgba(219,219,219,0.50) 93%, rgba(176,176,176,0.50) 100%);
+
       }
     }
   }
 }
+
+i.add {
+  background: url(icons/add.svg) no-repeat;
+  height: 12px;
+  width: 12px;
+  display: inline-block;
+  position: relative;
+  top: 1px;
+}
+
+i.add--section {
+  background: url(icons/add-section.svg) no-repeat;
+  height: 16px;
+  width: 24px;
+  display: inline-block;
+  position: relative;
+  top: 3px;
+}
+
+i.add--pg {
+  background: url(icons/add-pg.svg) no-repeat;
+  height: 16px;
+  width: 24px;
+  display: inline-block;
+  position: relative;
+  top: 3px;
+}
+
+
+

@@ -4,43 +4,70 @@
       #nav
         %ul.addnav
           %li 
-            %a{:href => "#{}"} Add Page
+            %a{:href => "#{}"} 
+              %i.add--pg
+              Add Page
           %li
-            %a{:href => "#{}"} Add Section
+            %a{:href => "#{}"}
+              %i.add--section 
+              Add Section
         %ul.nav--stacked
           %li.page 
             %a{:href => "#{}"} This is a Page Title
-        %ul.nav--stacked
           %li.section 
             %a{:href => "#{}"} H1 Title
           %li.section
             %a{:href => "#{}"} H1 Title
           %li.section
             %a{:href => "#{}"} H1 Title
+          %li.page 
+            %a{:href => "#{}"} This is another Page Title
+          %li.section 
+            %a{:href => "#{}"} H1 Title
+          %li.section
+            %a{:href => "#{}"} H1 Title
     
     .grid.three-quarters
       .main{:role => "main"}
-        / This needs to be edit-albe as well
-        %h1 This is the Page title
+        .head  
+          / This needs to be edit-albe as well
+          %h1.left This is the Page title
+          %ul.right
+            %li
+              Preview
+            %li
+              Publish
+            %li
+              Settings
         %a#toggle{:href => "#toolbar"} Menu
-        #bzng-toolbar.toolbar
-          %a.btn{"data-wysihtml5-command" => "formatBlock", "data-wysihtml5-command-value" => "h1"} H1
-          %a.btn{"data-wysihtml5-command" => "formatBlock", "data-wysihtml5-command-value" => "h2"} H2
-          %a.btn{"data-wysihtml5-command" => "formatBlock", "data-wysihtml5-command-value" => "h3"} H3
-          %a.btn{"data-wysihtml5-command" => "bold"} bold
-          %a.btn{"data-wysihtml5-command" => "italic"} italic
-          %a.btn{"data-wysihtml5-command" => "insertUnorderedList"} UL
-          %a.btn{"data-wysihtml5-command" => "insertOrderedList"} OL
-          %a.btn{"data-wysihtml5-command" => "formatCode"} Code
+        %ul#bzng-toolbar.toolbar.cf
+          %li
+            %a.btn{"data-wysihtml5-command" => "formatBlock", "data-wysihtml5-command-value" => "h1"} H1
+          %li
+            %a.btn{"data-wysihtml5-command" => "formatBlock", "data-wysihtml5-command-value" => "h2"} H2
+          %li
+            %a.btn{"data-wysihtml5-command" => "formatBlock", "data-wysihtml5-command-value" => "h3"} H3
+          %li
+            %a.btn{"data-wysihtml5-command" => "bold"} bold
+          %li
+            %a.btn{"data-wysihtml5-command" => "italic"} italic
+          %li
+            %a.btn{"data-wysihtml5-command" => "insertUnorderedList"} UL
+          %li
+            %a.btn{"data-wysihtml5-command" => "insertOrderedList"} OL
+          %li
+            %a.btn{"data-wysihtml5-command" => "formatCode"} Code
           / Some wysihtml5 commands like 'createLink' require extra paramaters specified by the user (eg. href)
-          %a.btn{"data-wysihtml5-command" => "createLink"} link
-          %div{"data-wysihtml5-dialog" => "createLink", :style => "display: none;"}
-            %label
-              Link:
-              %input.text{"data-wysihtml5-dialog-field" => "text", placeholder: "Link Text"}
-              %input.text{"data-wysihtml5-dialog-field" => "href", :value => "http://"}
-            %a.btn{"data-wysihtml5-dialog-action" => "save"} OK
-            %a{"data-wysihtml5-dialog-action" => "cancel"} Cancel
+          %li
+            %a.btn{"data-wysihtml5-command" => "createLink"} link
+            %div{"data-wysihtml5-dialog" => "createLink", :style => "display: none;"}
+              %label
+                Link:
+                %input.text{"data-wysihtml5-dialog-field" => "text", placeholder: "Link Text"}
+                %input.text{"data-wysihtml5-dialog-field" => "href", :value => "http://"}
+              %a.btn{"data-wysihtml5-dialog-action" => "save"} OK
+              %a{"data-wysihtml5-dialog-action" => "cancel"} Cancel
+        
         %form
           = text_area_tag "bazinga-editor", nil, id: "bzng-editor", class: "bzng-editor"
 

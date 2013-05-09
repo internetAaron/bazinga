@@ -2,47 +2,19 @@
  display: block;
 }
 
-.main {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-overflow-scrolling: touch;
-  padding: 1.2em 2em;
-  border-radius: 3px;
-  @include vendor(box-shadow, 0 0 5px rgba(0,0,0, .4));
-  background: #fff;
-  margin: 75px 0 20px 0;
-
-  #nav {
-    a {
-      color: #333;
-    }
-  }
-}
-
-.main::-webkit-scrollbar {
-  -webkit-appearance: none;
-  background-color: rgba(0,0,0, .15);
-  width: 8px;
-  height: 8px;
-}
-
-.main::-webkit-scrollbar-thumb {
-  border-radius: 0;
-  background-color: rgba(0,0,0, .4);
-}
-
-iframe.wysihtml5-sandbox {
-  border: 0 !important;
-  cursor: text;
-}
-
-.bzng-editor {
-  cursor: text;
-}
-
 
 .grid__item, .grid {
   float: left;
   display: initial;
+  margin: 0;
+}
+
+.left {
+  display: inline-block;
+  float: left;
+}
+
+.right {
+  display: inline-block;
+  float: right;
 }
